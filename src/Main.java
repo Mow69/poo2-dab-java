@@ -28,19 +28,8 @@ public class Main {
             listeComptes
         );
 
-                // compteCheque.setSolde(111);
-
-        // ServicesClientInterface monServices = new ServiceClient();
-
-        // teste la différence entre type interface et implémentations
-        // ServiceClient monServices = new ServiceClient();
-        // monServices.getSoldeCompte();
-        // int soldeCompteCheque = monServices.consulterSoldeCompte(compteCheque);
-        // monServices.consulterSoldeCompte(compteEpargne);
-
         // Instancialisation monService
         ServiceClient monServices = new ServiceClient();
-        // monServices.deposer(compteEpargne, 10);
 
         // output results
         utils.outputAccountSold(client);
@@ -50,11 +39,10 @@ public class Main {
             String m_operationSaisie;
             String m_montantSaisi;
             
-            // Enter amount and press Enter
+            // Enter a number between 1 or 2 and press Enter
             System.out.println("Entrez une opération : \nsoit [1] pour déposer un montant, \nsoit [2] pour retirer un montant."); 
             m_operationSaisie = inputValue.nextLine();  
             int m_operation = Integer.parseInt(m_operationSaisie);
-
 
             // Enter amount and press Enter
             System.out.println("Entrez un montant :"); 
@@ -66,6 +54,7 @@ public class Main {
             // output actualized results
             utils.outputAccountSold(client);
         } catch (NumberFormatException e) {
+            // En cas d'exception, on affiche un message dans la console suivi du message d'erreur
             System.out.println("Oups ! Erreur sur l'opération saisie ou le montant saisi.\n"); 
             e.printStackTrace();
         }

@@ -1,11 +1,13 @@
 package data;
 
 public class Client {
+    // initialize attributes
     private String identifiant;
     private String nom;
     private String prenom;
     private Compte[] listeComptes;
 
+    // constructors
     public Client() {}
     public Client(String identifiant, String nom, String prenom, Compte[] listeComptes) {
         this.identifiant = identifiant;
