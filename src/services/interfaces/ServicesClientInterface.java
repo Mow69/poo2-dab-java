@@ -1,5 +1,7 @@
 package services.interfaces;
 
+import data.Compte;
+
 public interface ServicesClientInterface {
     /**
      * Fonction qui permet au client de déposer de l'argent
@@ -16,5 +18,9 @@ public interface ServicesClientInterface {
      * @return : true si l'opération s'est bien déroulée
      */
     public boolean retirerEspeces(int m_montantARetirer);
+
+    // autre possibilité, préciser en argument le type de compte (espèce, chèque etc... compte courant, compte bancaire...)
+    // public boolean retirer(Compte m_compte, int m_montantARetirer);
+
 
 }

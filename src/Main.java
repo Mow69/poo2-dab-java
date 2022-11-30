@@ -9,6 +9,7 @@ public class Main {
 
         // ServicesClientInterface monServices = new ServiceClient();
 
+        // teste la différence enyte type interface et implémentations
         ServiceClient monServices = new ServiceClient();
         monServices.getSoldeCompte();
 
