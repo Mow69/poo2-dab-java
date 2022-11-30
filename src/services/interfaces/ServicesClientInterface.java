@@ -3,6 +3,13 @@ package services.interfaces;
 import data.Compte;
 
 public interface ServicesClientInterface {
+    // constantes des opérations
+    public final int OPERATION_DEPOSER = 1;
+    public final int OPERATION_RETIRER = 2;
+
+    public boolean realizeOperation(int m_operation, Compte m_compte, int m_montantADeposer);
+
+
     // /**
     //  * Fonction qui permet au client de déposer de l'argent
     //  * Le compte du client est crédité d'un montant = m_montantADeposer
@@ -12,7 +19,7 @@ public interface ServicesClientInterface {
     // public boolean deposerEspeces(int m_montantADeposer);
 
     public boolean deposer(Compte m_compte, int m_montantADeposer);
-    
+
     // /**
     //  * Fonction qui permet au client de retirer de l'argent
     //  * Le compte du client est débité d'un montant = m_montantADeposer

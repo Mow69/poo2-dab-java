@@ -1,12 +1,18 @@
+import java.util.Scanner;
+
 import data.Client;
 import data.Compte;
 import services.importations.ServiceClient;
+import utils.Utils;
 
 /**
  * Main
  */
 public class Main {
     public static void main(String[] args) {
+        // initialize utils
+        Utils utils = new Utils();
+
         // initialize comptes
         Compte compteCheque = new Compte("Chèque", 480);
         Compte compteEpargne = new Compte("Epargne", 2000);
@@ -26,41 +32,43 @@ public class Main {
 
         // ServicesClientInterface monServices = new ServiceClient();
 
-        // teste la différence enyte type interface et implémentations
-        ServiceClient monServices = new ServiceClient();
+        // teste la différence entre type interface et implémentations
+        // ServiceClient monServices = new ServiceClient();
         // monServices.getSoldeCompte();
         // int soldeCompteCheque = monServices.consulterSoldeCompte(compteCheque);
         // monServices.consulterSoldeCompte(compteEpargne);
 
-        monServices.deposer(compteEpargne, 10);
-
-
-        // this.outputAccountSold(client);
+        // Instancialisation monService
+        ServiceClient monServices = new ServiceClient();
+        // monServices.deposer(compteEpargne, 10);
 
         // output results
-        System.out.println(
-            "Bonjour Client n° " + client.getIdentifiant() + " - " 
-            + client.getPrenom() + " " 
-            + client.getNom() + " : \n"
-            // + "Il vous reste sur votre compte " + client.getCompteList()[0].getCategorie() + " : " + client.getCompteList()[0].getSolde() + " euros.\n"
-            // + "Il vous reste sur votre compte " + client.getCompteList()[1].getCategorie() + " : " + client.getCompteList()[0].getSolde() + " euros.\n"
-            );
+        utils.outputAccountSold(client);
 
-        for (Compte compte : client.getCompteList()) {
-            System.out.println("Il vous reste sur votre compte " + compte.getCategorie() + " : " + compte.getSolde() + " euros.\n");
+        // input handle
+        try (Scanner inputValue = new Scanner(System.in)) {
+            String m_operationSaisie;
+            String m_montantSaisi;
+            
+            // Enter amount and press Enter
+            System.out.println("Entrez une opération : \nsoit [1] pour déposer un montant, \nsoit [2] pour retirer un montant."); 
+            m_operationSaisie = inputValue.nextLine();  
+            int m_operation = Integer.parseInt(m_operationSaisie);
+
+
+            // Enter amount and press Enter
+            System.out.println("Entrez un montant :"); 
+            m_montantSaisi = inputValue.nextLine();   
+
+            // monServices.deposer(compteEpargne, Integer.parseInt(m_montantSaisi));
+            monServices.realizeOperation(m_operation, compteEpargne, Integer.parseInt(m_montantSaisi));
+
+            // output actualized results
+            utils.outputAccountSold(client);
+        } catch (NumberFormatException e) {
+            System.out.println("Oups ! Erreur sur l'opération saisie ou le montant saisi.\n"); 
+            e.printStackTrace();
         }
 
     }
-
-    // public String outputAccountSold(Client client) {
-    //     System.out.println(
-    //         "Bonjour Client n° " + client.getIdentifiant() + " - " 
-    //         + client.getPrenom() + " " 
-    //         + client.getNom() + " : \n"
-    //         );
-
-    //     for (Compte compte : client.getCompteList()) {
-    //         System.out.println("Il vous reste sur votre compte " + compte.getCategorie() + " : " + compte.getSolde() + " euros.\n");
-    //     }    
-    // }
 }
