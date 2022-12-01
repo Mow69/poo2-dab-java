@@ -15,7 +15,7 @@ public class Utils {
             + client.getNom() + " : \n"
             );
 
-        // affiche dynamique le solde et la catégorie de compte selon le nombre dont dispose le client
+        // affiche dynamiquement le solde et la catégorie de compte selon le nombre dont dispose le client
         for (Compte compte : client.getCompteList()) {
             System.out.println("Il vous reste sur votre compte " + compte.getCategorie() + " : " + compte.getSolde() + " euros.\n");
         }    
