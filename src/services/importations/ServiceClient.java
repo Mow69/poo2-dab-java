@@ -4,8 +4,6 @@ import data.Compte;
 import services.interfaces.ServicesClientInterface;
 
 public class ServiceClient implements ServicesClientInterface {
-    // private int espece;
-    // private int cheque;
 
     @Override
     public boolean realizeOperation(int m_operation, Compte m_compte, int m_montantSaisi) {
